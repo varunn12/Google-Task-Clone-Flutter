@@ -6,11 +6,14 @@ void main()=>runApp(new MaterialApp(
 ));
 
 class MyApp extends StatefulWidget {
+ 
   @override
   _MyAppState createState() => new _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
+   Animation animation;
+  AnimationController animationController;
   var groups=['My Order', 'Date'];
   bool showDrawer=false;
   final _scaffoldKey=new GlobalKey<ScaffoldState>();
@@ -32,10 +35,11 @@ void _textModalSheet(){
         children: <Widget>[
           new TextFormField(
             maxLines: 3,
+            autofocus: true,
           decoration: new InputDecoration(
             filled: true,
             fillColor: Colors.white,
-            border: null
+            border:  InputBorder.none
           ),
           ), new Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,6 +150,22 @@ void _showModalSheet(){
   )
  );
 }
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    animationController=new AnimationController(
+      vsync: this, duration: new Duration(milliseconds: 1500));
+    animation=new CurvedAnimation(parent: animationController, curve: Curves.easeIn);
+    animation.addListener((){
+this.setState((){
+
+});
+    });
+    animationController.forward();
+  }
+
         @override
         Widget build(BuildContext context) {
         return new Scaffold(
@@ -161,7 +181,7 @@ void _showModalSheet(){
     flexibleSpace: new FlexibleSpaceBar(
     title: new Text("Bookmarq",
     style: new TextStyle(
-                  fontSize: 20.0,
+                  fontSize: animation.value*20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),),
