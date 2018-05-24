@@ -166,6 +166,13 @@ this.setState((){
     animationController.forward();
   }
 
+@override
+  void dispose() {
+    // TODO: implement dispose
+    animationController.dispose();
+    super.dispose();
+  }
+
         @override
         Widget build(BuildContext context) {
         return new Scaffold(
@@ -181,7 +188,7 @@ this.setState((){
     flexibleSpace: new FlexibleSpaceBar(
     title: new Text("Bookmarq",
     style: new TextStyle(
-                  fontSize: animation.value*20.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),),
