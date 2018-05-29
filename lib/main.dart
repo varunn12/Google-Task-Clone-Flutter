@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'customModalSheet.dart';
 
 void main()=>runApp(new MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
   
 
 void _textModalSheet(){
-  showModalBottomSheet(
+  showCustomModalBottomSheet(
     context: context,
     builder: (context)=>new Container(
       height: 150.0,
@@ -61,7 +62,7 @@ void _textModalSheet(){
 }  
 
 void _showPrimaryModalSheet(){
-showModalBottomSheet(
+showCustomModalBottomSheet(
   context: context,
   builder: (context)=>new SingleChildScrollView(
       child: new Container(
@@ -93,8 +94,8 @@ showModalBottomSheet(
   ));
 }
 
-void _showModalSheet(){
- showModalBottomSheet(
+void _showModalSheet(){ 
+ showCustomModalBottomSheet(
  context: context,
   builder: (context)=> new Container(
     
